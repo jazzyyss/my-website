@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Legends</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
+
+</head>
+
+<body style="background-color: #111;">
+    <header class="header">
+        <h1 class="brand">Tech <span>in</span> Veins</h1>
+        <nav class="navBtnClosed" id="navBtn"><i onclick="changeBtn()" class="fas fa-bars"></i></nav>
+    </header>
+    <section id="box"></section>
+    <section class="queryBox">
+        <div class="feedback">
+            <form action="../includes/query.inc.php" method="post" onsubmit="alert('Developers will get into it.Thank you for your precious time.')">
+
+                <input required="required" type="text" name="name" placeholder="Name...">
+
+                <input required="required" type="email" name="email" placeholder="E-mail...">
+
+
+                <textarea required="required" name="feedback" cols="30" rows="5" placeholder="Query/Feedback..."></textarea>
+
+                <button type="submit" name="querySubmit">Submit</button>
+            </form>
+        </div>
+        <div class="rate">
+            <img src="../img/query.jpg" alt="Queries..?Let us know.">
+            <h1>Queries..?Let us Know.</h1>
+            <p>Developers will get your query and will soon <br>look onto it as making you feel comfortable is all we want.</p>
+            <h2>Everything going well..?Please take <br>some time to give your valuable <br>feedback.</h2>
+        </div>
+    </section>
+    <footer class="footer" style="margin-top:50px;border-top:2px solid #FC427B;">
+        <h1>Tech <span>in</span> Veins | <span>&copy; 2019</span></h1>
+        <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="workSample.html">Work Sample</a></li>
+            <li><a href="query.html">Query/Feedback</a></li>
+            <li><a href="hire.html">Hire</a></li>
+        </ul>
+    </footer>
+</body>
+
+</html>

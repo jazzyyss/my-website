@@ -1,0 +1,849 @@
+@import "reset.scss";
+//mixins
+@mixin mediaQuery {
+    @media(max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin insideHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-height: 50px;
+    @include mediaQuery {
+        grid-template-columns: 3fr 1fr;
+    }
+    .brand {
+        line-height: 50px;
+        padding-left: 5px;
+        color: #FC427B;
+        border-bottom: 2px solid #FC427B;
+        @include mediaQuery {
+            font-size: 20px;
+            align-self: center;
+            border: none;
+        }
+        span {
+            color: #cccccc;
+        }
+    }
+    .navBtnClosed {
+        text-align: right;
+        font-size: 25px;
+        padding: 10px 20px 5px 0;
+        i {
+            border: 1px solid #ccc;
+            padding: 5px;
+            color: #ccc;
+        }
+        & :hover {
+            cursor: pointer;
+        }
+    }
+    .navBtnOpened {
+        color: #FC427B;
+    }
+}
+
+@mixin queryInput {
+    display: block;
+    margin: 40px auto;
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    outline: none;
+    border: 2px solid lighten(#FC427B, 20%);
+    text-align: center;
+    color: #ccc;
+    background: none;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all;
+    transition-duration: 300ms;
+    transition-timing-function: linear;
+    @include mediaQuery {
+        width: calc(100% - 10px);
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid lighten(#FC427B, 20%);
+        font-weight: 200;
+    }
+    &:hover {
+        cursor: pointer;
+        width: 350px;
+        border: 2px solid #FC427B;
+        transition: 300ms;
+        @include mediaQuery {
+            width: calc(100% - 10px);
+            border: 1px solid #FC427B;
+            font-weight: 200;
+        }
+    }
+    &:focus {
+        color: lighten(#FC427B, 20%);
+        background: #333;
+    }
+}
+
+@mixin queryButton {
+    display: block;
+    margin: 40px auto;
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    outline: none;
+    border: 2px solid #FC427B;
+    text-align: center;
+    border-radius: 50px;
+    color: #333;
+    background: none;
+    font-size: 15px;
+    font-weight: bold;
+    background: lighten(#FC427B, 20%);
+    &:hover {
+        color: lighten(#FC427B, 20%);
+        background: #333;
+        cursor: pointer;
+    }
+}
+
+//scss for index page
+body {
+    font-family: 'Aclonica', sans-serif;
+    .bgImage {
+        background: url("../bg.jpg") repeat 0px -150px;
+        background-size: stretch;
+        @include mediaQuery {
+            background: #111;
+        }
+        header {
+            @include insideHeader;
+        }
+        border-bottom:2px solid #FC427B;
+    }
+    .showcase {
+        height: 452px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @include mediaQuery {
+            display: block;
+            position: relative;
+        }
+        .mainContent {
+            color: #aaa;
+            text-align: center;
+            h3 {
+                display: none;
+            }
+            @include mediaQuery {
+                h3 {
+                    display: unset;
+                    position: absolute;
+                    left: 0;
+                    top: 15px;
+                    width: 100%;
+                    font-size: 22px;
+                    text-shadow: 1px 1px 0.5px #fff;
+                }
+            }
+            h2 {
+                margin: auto;
+                font-weight: bold;
+                font-size: 40px;
+                margin-top: 40px;
+                width: 350px;
+                border-bottom: 2px solid #FC427B;
+                margin-bottom: 40px;
+                @include mediaQuery {
+                    position: absolute;
+                    width: calc(100% - 10px);
+                    top: 70%;
+                    font-size: 30px;
+                    border: none;
+                }
+            }
+            ul {
+                @include mediaQuery {
+                    display: none;
+                }
+                margin: auto;
+                display: block;
+                width: 250px;
+                height: 300px;
+                li {
+                    display: block;
+                    text-align: left;
+                    font-size: 30px;
+                }
+                li:first-child {
+                    color: lighten(#FC427B, 20%);
+                }
+            }
+        }
+        .mainImage {
+            img {
+                height: 452px;
+                width: 50vw;
+                // -webkit-clip-path: polygon(31% 1%, 100% 0%, 71% 100%, 0% 100%);
+                // clip-path: polygon(31% 1%, 100% 0%, 71% 100%, 0% 100%);
+                -webkit-clip-path: ellipse(30% 50% at 43% 50%);
+                clip-path: ellipse(30% 50% at 43% 50%);
+                opacity: 0.95;
+                @include mediaQuery {
+                    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                    height: 210px;
+                    width: 300px;
+                    display: block;
+                    margin: auto;
+                }
+            }
+            overflow: hidden;
+            padding-left: 100px;
+            box-sizing: border-box;
+            @include mediaQuery {
+                position: absolute;
+                padding: 0;
+                margin: 15px auto;
+                margin-top: 125px;
+                width: 100%;
+            }
+        }
+    }
+    .box {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 93vw;
+        height: 85vh;
+        z-index: 999;
+        overflow: hidden;
+        background-color: #333;
+        opacity: 0.95;
+        display: grid;
+        grid-template-areas: 'link1 link3 link2' 'link4 link3 link5';
+        animation: slideMenu;
+        animation-duration: 500ms;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+        @include mediaQuery {
+            position: absolute;
+            left: 0px;
+            top: 55px;
+            width: 100%;
+            height: 60px;
+            display: block;
+            animation: none;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        @keyframes slideMenu {
+            0% {
+                height: 0;
+            }
+            100% {
+                height: 85vh;
+            }
+        }
+        .link1 {
+            grid-area: link1;
+        }
+        .link2 {
+            grid-area: link2;
+        }
+        .link3 {
+            grid-area: link3;
+        }
+        .link4 {
+            grid-area: link4;
+        }
+        .link5 {
+            grid-area: link5;
+        }
+        .btnLink {
+            align-self: center;
+            justify-self: center;
+            font-size: 80px;
+            overflow: hidden;
+            color: black;
+            position: relative;
+            i {
+                padding: 50px;
+                border-radius: 25%;
+                transition: all;
+                transition-duration: 500ms;
+                @include mediaQuery {
+                    border-radius: none;
+                    transition: none;
+                    font-size: 30px;
+                    padding: 10px;
+                    position: absolute;
+                }
+            }
+            p {
+                font-size: 30px;
+                align-content: center;
+                text-align: center;
+                border-radius: 20px;
+                @include mediaQuery {
+                    display: none;
+                }
+            }
+            @include mediaQuery {
+                height: 100%;
+                width: 20%;
+                float: left;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+        }
+    }
+    .box:after {
+        content: '';
+        position: absolute;
+        left: calc(90vw + 23px);
+        top: 5px;
+        width: 30px;
+        height: 40px;
+        background-color: #333;
+        transform: rotate(45deg);
+    }
+    .partBox {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 420px;
+        position: relative;
+        border-bottom: 2px solid #FC427B;
+        @include mediaQuery {
+            grid-template-columns: 1fr;
+            border-bottom: 1px solid #FC427B;
+        }
+        .partImage {
+            position: relative;
+            background: lighten(rgb(12, 12, 12), 5%);
+            border-right: 1px dotted #ffffff;
+            @include mediaQuery {
+                border: none;
+                border-bottom: 1px solid #FC427B;
+            }
+            &:hover {
+                img {
+                    width: 150px;
+                    height: 200px;
+                    @include mediaQuery {
+                        width: 100px;
+                        height: 134px;
+                    }
+                }
+                .imageLeft {
+                    transition: all;
+                    transition-duration: 500ms;
+                    transition-timing-function: linear;
+                    position: absolute;
+                    top: 50%;
+                    left: 5%;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                    @include mediaQuery {
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        top: 5px;
+                    }
+                }
+                .imageRight {
+                    transition: all;
+                    transition-duration: 500ms;
+                    transition-timing-function: linear;
+                    position: absolute;
+                    top: 50%;
+                    left: 70%;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                    @include mediaQuery {
+                        position: absolute;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        top: 5px;
+                    }
+                }
+            }
+            img {
+                width: 250px;
+                height: 300px;
+                box-sizing: border-box;
+                z-index: 1;
+                @include mediaQuery {
+                    width: 100px;
+                    height: 134px;
+                }
+            }
+            .imageLeft {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                @include mediaQuery {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    top: 5px;
+                }
+            }
+            .imageRight {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                @include mediaQuery {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    top: 5px;
+                }
+            }
+            .imageContent {
+                margin-top: 130px;
+                text-align: center;
+                color: #ccc;
+                font-size: 30px;
+                @include mediaQuery {
+                    ul {
+                        display: none;
+                    }
+                }
+            }
+            h2 {
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 400px;
+                color: lighten(#FC427B, 20%);
+                @include mediaQuery {
+                    position: absolute;
+                    width: calc(100% - 10px);
+                    top: 70%;
+                    font-size: 30px;
+                }
+            }
+            li:first-child {
+                width: 250px;
+                margin: auto;
+                border-bottom: 1px solid #FC427B;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    .footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        height: 30px;
+        overflow: hidden;
+        background: #333;
+        @include mediaQuery {
+            // display: grid;
+            grid-template-columns: 1fr;
+            height: 60px;
+            width: 100%;
+        }
+        h1 {
+            color: #FC427B;
+            margin: 0 auto;
+            span {
+                color: #ccc;
+            }
+            @include mediaQuery {
+                font-size: 20px;
+            }
+        }
+        ul {
+            display: inline-grid;
+            grid-template-columns: repeat(4, 1fr);
+            @include mediaQuery {
+                font-size: 10px;
+            }
+            li {
+                text-align: center;
+                margin: 8.5px;
+                a {
+                    color: lighten(#FC427B, 20%);
+                    &:hover {
+                        color: #FC427B;
+                    }
+                }
+            }
+        }
+        border-bottom:2px solid #FC427B;
+    }
+}
+
+//scss for developers
+body {
+    .devImage {
+        height: 350px;
+        width: 100%;
+        background-color: #333;
+        filter: blur(1px);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        @include mediaQuery {
+            display: none;
+        }
+    }
+    .headerSecondary {
+        @include insideHeader;
+        z-index: 1;
+    }
+    .profiler {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        box-sizing: border-box;
+        position: relative;
+        height: 300px;
+        @include mediaQuery {
+            display: block;
+            width: 100vw;
+            height: 110px;
+        }
+        .profilerName {
+            position: relative;
+            h1 {
+                position: absolute;
+                right: 0;
+                top: 230px;
+                color: #ccc;
+                font-size: 40px;
+                @include mediaQuery {
+                    top: 20px;
+                    left: 5%;
+                    font-size: 20px;
+                }
+            }
+        }
+        .profilerImage {
+            position: relative;
+            img {
+                position: absolute;
+                top: 80px;
+                right: 200px;
+                box-sizing: border-box;
+                -webkit-clip-path: circle(50% at 50% 50%);
+                clip-path: circle(50% at 50% 50%);
+                height: 300px;
+                width: 300px;
+                @include mediaQuery {
+                    height: 100px;
+                    width: 100px;
+                    top: 5px;
+                    right: 3%;
+                }
+            }
+        }
+    }
+    .devMenu {
+        width: 700px;
+        height: 40px;
+        box-sizing: border-box;
+        margin-left: 50px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        @include mediaQuery {
+            width: 100vw;
+            height: 30px;
+            margin: 5px auto;
+        }
+        ul {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            li {
+                background: #333;
+                border-radius: 20px;
+                line-height: 40px;
+                text-align: center;
+                color: lighten(#FC427B, 20%);
+                margin-right: 5px;
+                @include mediaQuery {
+                    border-radius: 3px;
+                    line-height: 20px;
+                    margin-right: 1px;
+                }
+                &:hover {
+                    color: #FC427B;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .devContent {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        height: 400px;
+        box-sizing: border-box;
+        // background-color: darken(#aaa, 30%);
+        @include mediaQuery {
+            display: block;
+            width: 100vw;
+        }
+        .devInfo {
+            margin: 20px;
+            //border: 2px solid black;
+            background-color: #333;
+            padding: 10px;
+            color: #ccc;
+            border-radius: 20px;
+            @include mediaQuery {
+                margin: 0;
+                border-radius: 0;
+                overflow-y: scroll;
+                height: 390px;
+                box-sizing: border-box;
+            }
+            h2 {
+                font-size: 40px;
+                width: 500px;
+                border-bottom: 1px solid black;
+                color: lighten(#FC427B, 20%);
+                @include mediaQuery {
+                    width: 100%;
+                    font-size: 20px;
+                    border: none;
+                }
+            }
+            p {
+                font-size: 20px;
+                word-spacing: 0.5em;
+                line-height: 2em;
+                @include mediaQuery {
+                    font-size: 18px;
+                    line-height: 22px;
+                    word-spacing: 0.2em;
+                }
+                i {
+                    color: lighten(#FC427B, 20%);
+                    margin-right: 5px;
+                }
+                span {
+                    border-bottom: 1px solid #ccc;
+                }
+            }
+            img {
+                height: 200px;
+                width: 200px;
+                margin: 50px auto;
+                z-index: 999;
+                border-radius: 20px;
+                margin-right: 30px;
+                @include mediaQuery {
+                    display: block;
+                    margin: 20px auto;
+                    border-radius: 3px;
+                }
+            }
+        }
+        .socialLinks {
+            display: grid;
+            grid-template-rows: repeat(4, 1fr);
+            grid-gap: space-around;
+            background-color: #333;
+            border-radius: 20px;
+            margin: 20px;
+            margin-bottom: 30px;
+            @include mediaQuery {
+                display: none;
+            }
+            i {
+                justify-self: center;
+                align-self: center;
+                font-size: 20px;
+                color: #ccc;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+// scss for query
+body {
+    .header {
+        @include insideHeader;
+    }
+    .queryBox {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 20px;
+        @include mediaQuery {
+            display: block;
+            box-sizing: border-box;
+            width: 100vw;
+        }
+        .feedback {
+            padding: 15px;
+            @include mediaQuery {
+                padding: 0;
+                width: 100%;
+            }
+            input {
+                border-radius: 50px;
+                @include queryInput;
+            }
+            textarea {
+                border-radius: 5px;
+                @include queryInput;
+                height: 100px;
+                padding: 10px;
+                line-height: 20px;
+            }
+            button {
+                @include queryButton;
+            }
+        }
+        .rate {
+            @include mediaQuery {
+                display: none;
+            }
+            display: grid;
+            grid-template-rows: repeat(6,
+            1fr);
+            height: 500px;
+            padding: 30px;
+            box-sizing: border-box;
+            position: relative;
+            text-shadow: 1px 1px 1px #fff;
+            img {
+                height: 400px;
+                width: 550px;
+                border-radius: 20px;
+                filter: blur(2px);
+            }
+            h1 {
+                position: absolute;
+                left: 50px;
+                top: 40px;
+            }
+            p {
+                position: absolute;
+                top: 80px;
+                left: 50px;
+                line-height: 30px;
+            }
+            h2 {
+                position: absolute;
+                left: 50px;
+                top: 160px;
+            }
+        }
+    }
+}
+
+//scss for contact 
+body {
+    .contactBox {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        @include mediaQuery {
+            display: grid;
+            grid-template-columns: 1fr;
+            margin-top: 20px;
+        }
+        .devBox {
+            position: relative;
+            box-sizing: border-box;
+            height: 300px;
+            padding: 20px;
+            margin-top: 10px;
+            img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 270px;
+                height: 270px;
+                z-index: -1;
+                filter: blur(2px);
+            }
+            h2 {
+                position: absolute;
+                top: 20%;
+                left: 10%;
+                color: #ccc;
+                border-bottom: 2px solid #aaa;
+            }
+            p {
+                position: absolute;
+                top: 30%;
+                left: 10%;
+                color: #bbb;
+                margin-top: 30px;
+            }
+            input {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: none;
+                color: #111;
+                text-align: center;
+                border-radius: 20px;
+                height: 30px;
+                line-height: 30px;
+                width: 250px;
+                &:hover,
+                &:focus {
+                    background: #aaa;
+                }
+            }
+            button {
+                position: absolute;
+                top: 70%;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 25px;
+                line-height: 25px;
+                font-size: 15px;
+                background: #333;
+                border: 2px solid #333;
+                color: #ccc;
+                border-radius: 10px;
+                box-shadow: 1.5px 1.5px 1px #111;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+// scss for hire
+body {
+    .hireBox {
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        @include mediaQuery {
+            width: 100%;
+        }
+        h1 {
+            color: #ccc;
+            text-align: center;
+        }
+        input {
+            @include queryInput;
+            border-radius: 20px;
+        }
+        textarea {
+            @include queryInput;
+            border-radius: 5px;
+            height: 150px;
+            padding: 10px;
+            line-height: 20px;
+        }
+        button {
+            @include queryButton;
+        }
+    }
+}

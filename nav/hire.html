@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Legends</title>
+    <link rel="icon" type="image/png" href="../img/favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Aclonica" rel="stylesheet">
+
+</head>
+
+<body style="background-color: #111;">
+    <header class="header">
+        <h1 class="brand">Tech <span>in</span> Veins</h1>
+        <nav class="navBtnClosed" id="navBtn"><i onclick="changeBtn()" class="fas fa-bars"></i></nav>
+    </header>
+    <section id="box"></section>
+    <div class="hireBox">
+        <form action="../includes/hire.inc.php" method="post" onsubmit="alert('Developer will soon reach you.')">
+            <h1>Hire an Engineer</h1>
+            <input required="required" type="email" name="email" placeholder="Enter you E-mail...">
+            <input required="required" type="text" name="whatFor" placeholder="What for..">
+            <input required="required" type="text" name="budget" placeholder="budget for project...">
+            <textarea required="required" name="description" placeholder="Describe project in detail.."></textarea>
+            <button type="submit" name="hireDeveloper">Hire</button>
+        </form>
+    </div>
+    <footer class="footer" style="border-top:2px solid #FC427B;margin-top:700px;">
+        <h1>Tech <span>in</span> Veins | <span>&copy; 2019</span></h1>
+        <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="workSample.html">Work Sample</a></li>
+            <li><a href="query.html">Query/Feedback</a></li>
+            <li><a href="hire.html">Hire</a></li>
+        </ul>
+    </footer>
+</body>
+
+</html>
