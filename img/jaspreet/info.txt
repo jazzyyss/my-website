@@ -1,0 +1,7 @@
+must include...
+cover.jpg
+devImg1.jpg
+devImg2.jpg
+devImg3.jpg
+devImg4.jpg
+half.jpef
